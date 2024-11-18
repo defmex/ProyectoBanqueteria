@@ -3,11 +3,11 @@ import bcrypt
 
 # Create your models here.
 class Cliente(models.Model):
-    rut = models.IntegerField(primary_key=True)
+    rut = models.CharField(max_length=10, primary_key=True)
     nombre = models.CharField(max_length=100)
     apellido1 = models.CharField(max_length=100)
     apellido2 = models.CharField(max_length=100)
-    fecha_nacimiento = models.DateField(auto_now=True)
+    fecha_nacimiento = models.DateField(auto_now_add=True)
     nickname = models.CharField(max_length=100)
     ciudad = models.CharField(max_length=100)
     telefono = models.IntegerField()
@@ -31,11 +31,11 @@ class Cliente(models.Model):
     
 
 class Trabajador(models.Model):
-    rut = models.IntegerField(primary_key=True)
+    rut = models.CharField(max_length=10, primary_key=True)
     nombre = models.CharField(max_length=100)
     apellido1 = models.CharField(max_length=100)
     apellido2 = models.CharField(max_length=100)
-    fecha_nacimiento = models.DateField(auto_now=True)
+    fecha_nacimiento = models.DateField(auto_now_add=True)
     nickname = models.CharField(max_length=100)
     ciudad = models.CharField(max_length=100)
     telefono = models.IntegerField()
