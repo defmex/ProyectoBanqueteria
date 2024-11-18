@@ -1,0 +1,14 @@
+Backend 
+    Crear entorno virtual python
+        
+        pip install virtualenv
+
+        python -m venv backendEnv
+        
+    Activar entorno virtual  
+
+        backendEnv\Scripts\activate
+
+    Instalar librerias necesarias
+
+        pip install -r "requirements.txt"
