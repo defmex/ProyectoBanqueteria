@@ -1,2 +1,48 @@
+# Backend
 Backend/backendEnv/
+*.pyc
+__pycache__/
+db.sqlite3
+
+# Frontend
+Frontend/frontendAngular/node_modules/
+Frontend/frontendAngular/dist/
+Frontend/frontendAngular/tmp/
+Frontend/frontendAngular/out-tsc/
+Frontend/frontendAngular/bazel-out/
+Frontend/frontendAngular/.angular/cache/
+Frontend/frontendAngular/.sass-cache/
+Frontend/frontendAngular/connect.lock
+Frontend/frontendAngular/coverage/
+Frontend/frontendAngular/libpeerconnection.log
+Frontend/frontendAngular/testem.log
+Frontend/frontendAngular/typings/
+Frontend/frontendAngular/.history/
+
+# Logs
+*.log
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Miscellaneous
 Readmi.txt
