@@ -1,3 +1,4 @@
 # Backend
 Backend/backendEnv/
 Backend/db.sqlite3
+.env
