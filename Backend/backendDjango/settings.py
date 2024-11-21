@@ -43,9 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "rest_framework",  # Make sure you also have Django REST framework installed
+    'rest_framework',  # Make sure you also have Django REST framework installed
     'usuario',
-    "corsheaders",
+    'corsheaders',
+    'evento'
 ]
 
 MIDDLEWARE = [

@@ -10,7 +10,6 @@ from django.http import JsonResponse
 import json
 
 # Create your views here.
-
 class ClienteListCreate(generics.ListCreateAPIView):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer

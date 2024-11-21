@@ -7,5 +7,5 @@ urlpatterns = [
     path('clientes/login/', ClienteLogin.as_view(), name='cliente-login'),
     path('trabajador/', TrabajadorListCreate.as_view(), name='trabajador-list-create'), #  Url para llamar a los trabajadores general 
     path('trabajador/<int:pk>/', TrabajadorRetrieveUpdateDestroy.as_view(), name='trabajador-detail'), # Url para llamar a los trabajadores especifico 
-    path('trabajador/login/', TrabajadorLogin.as_view(), name='trabajador-login'),
+    path('trabajador/login/', TrabajadorLogin.as_view(), name='trabajador-login')
 ]
