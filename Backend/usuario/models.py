@@ -3,15 +3,15 @@ import bcrypt
 
 # Create your models here.
 class Cliente(models.Model):
-    rut = models.CharField(max_length=10)
+    rut = models.CharField(max_length=10, unique=True)
     nombre = models.CharField(max_length=100)
     apellido1 = models.CharField(max_length=100)
     apellido2 = models.CharField(max_length=100)
-    fecha_nacimiento = models.DateField(auto_now_add=True)
-    nickname = models.CharField(max_length=100)
+    fecha_nacimiento = models.DateField()
+    nickname = models.CharField(max_length=100, unique=True)
     ciudad = models.CharField(max_length=100)
     telefono = models.IntegerField()
-    correo = models.CharField(max_length=100)
+    correo = models.EmailField(max_length=100, unique=True)
     password = models.CharField(max_length=255)
 
     def __str__(self):
@@ -31,15 +31,15 @@ class Cliente(models.Model):
     
 
 class Trabajador(models.Model):
-    rut = models.CharField(max_length=10)
+    rut = models.CharField(max_length=10, unique=True)
     nombre = models.CharField(max_length=100)
     apellido1 = models.CharField(max_length=100)
     apellido2 = models.CharField(max_length=100)
-    fecha_nacimiento = models.DateField(auto_now_add=True)
-    nickname = models.CharField(max_length=100)
+    fecha_nacimiento = models.DateField()
+    nickname = models.CharField(max_length=100, unique=True)
     ciudad = models.CharField(max_length=100)
     telefono = models.IntegerField()
-    correo = models.CharField(max_length=100)
+    correo = models.EmailField(max_length=100, unique=True)
     password = models.CharField(max_length=255)
     rango = models.IntegerField()
 

@@ -46,7 +46,10 @@ INSTALLED_APPS = [
     'rest_framework',  # Make sure you also have Django REST framework installed
     'usuario',
     'corsheaders',
-    'evento'
+    'eventos',
+    'informes',
+    'pagos',
+    'reservas'
 ]
 
 MIDDLEWARE = [
