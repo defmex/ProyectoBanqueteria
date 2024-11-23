@@ -1,4 +1,37 @@
-# Backend
-Backend/backendEnv/
-Backend/db.sqlite3
-.env
+# Python
+*.py[cod]
+__pycache__/
+*.pyo
+*.pyd
+
+# Entornos virtuales
+venv/
+env/
+backendEnv/
+
+# Archivos de configuración de entorno
+*.env
+
+# Django
+db.sqlite3
+media/
+static/
+staticfiles/
+
+# Logs
+*.log
+
+# IDEs y editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Migraciones y archivos temporales innecesarios
+migrations/__pycache__/
+**/__pycache__/
