@@ -1,37 +1,25 @@
-# Python
-*.py[cod]
-__pycache__/
+# Ignorar archivos de compilación y carpetas de Python
+*.pyc
 *.pyo
 *.pyd
+__pycache__/
 
-# Entornos virtuales
-venv/
-env/
+# Ignorar el entorno virtual
 backendEnv/
 
-# Archivos de configuración de entorno
-*.env
+# Ignorar el archivo de configuración
+.env
 
-# Django
+# Ignorar la base de datos SQLite (si aplica)
 db.sqlite3
-media/
-static/
-staticfiles/
 
-# Logs
+# Ignorar archivos estáticos y de medios (generados por Django)
+static/
+media/
+
+# Ignorar logs
 *.log
 
-# IDEs y editores
-.idea/
+# Ignorar configuraciones específicas del editor
 .vscode/
-*.swp
-*.swo
-*.sublime-*
-
-# Sistema operativo
-.DS_Store
-Thumbs.db
-
-# Migraciones y archivos temporales innecesarios
-migrations/__pycache__/
-**/__pycache__/
+.idea/
