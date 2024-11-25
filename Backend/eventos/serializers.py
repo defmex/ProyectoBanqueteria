@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Banqueteria, Evento, ComponenteBanqueteria, Local
+from .models import Banqueteria, Evento, Componente, Local
 
 class BanqueteriaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,9 +11,9 @@ class EventoSerializer(serializers.ModelSerializer):
         model = Evento
         fields = '__all__'
 
-class ComponenteBanqueteriaSerializer(serializers.ModelSerializer):
+class ComponenteSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ComponenteBanqueteria
+        model = Componente
         fields = '__all__'
 
 class LocalSerializer(serializers.ModelSerializer):

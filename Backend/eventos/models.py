@@ -2,15 +2,16 @@ from django.db import models
 from usuario.models import Cliente
 
 # Create your models here.
-class ComponenteBanqueteria(models.Model):
+class Componente(models.Model):
     tipo = models.CharField(max_length=100)
     costo = models.IntegerField()
+    descripcion = models.CharField(max_length=255, null=True, blank=True)
     link_img = models.CharField(max_length=255, null=True, blank=True)
     
 class Banqueteria(models.Model):
     tipo = models.CharField(max_length=100)
     costo = models.IntegerField()
-    componentes = models.ManyToManyField(ComponenteBanqueteria)
+    descripcion = models.CharField(max_length=255, null=True, blank=True)
     link_img = models.CharField(max_length=255, null=True, blank=True)
 
 class Local(models.Model):
@@ -18,11 +19,13 @@ class Local(models.Model):
     ciudad = models.CharField(max_length=100)
     capacidad = models.IntegerField()
     precio = models.IntegerField()
+    descripcion = models.CharField(max_length=255, null=True, blank=True)
     link_img = models.CharField(max_length=255, null=True, blank=True)
 
 class Evento(models.Model):
     num_personas = models.IntegerField()
     fecha_evento = models.DateField()
+    id_componenetes = models.ForeignKey(Componente, on_delete=models.CASCADE, null=True, blank=True)
     id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)   
     id_banqueteria = models.ForeignKey(Banqueteria, on_delete=models.CASCADE, null=True, blank=True)
     id_local = models.ForeignKey(Local, on_delete=models.CASCADE, null=True, blank=True)
