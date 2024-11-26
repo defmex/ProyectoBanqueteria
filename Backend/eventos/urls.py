@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import EventoListCreate, EventoRetrieveUpdateDestroy, BanqueteriaListCreate, BanqueteriaRetrieveUpdateDestroy, ComponenteListCreate, ComponenteRetrieveUpdateDestroy, LocalListCreate, LocalRetrieveUpdateDestroy
+from .views import EventoListCreate, EventoRetrieveUpdateDestroy, BanqueteriaListCreate, BanqueteriaRetrieveUpdateDestroy, ComponenteListCreate, ComponenteRetrieveUpdateDestroy, LocalListCreate, LocalRetrieveUpdateDestroy, EventoComponenteListCreate, EventoComponenteRetrieveUpdateDestroy, EventoBanqueteriaListCreate, EventoBanqueteriaRetrieveUpdateDestroy
 
 urlpatterns = [
     path('evento/', EventoListCreate.as_view(), name='evento-list-create'),  
@@ -10,4 +10,8 @@ urlpatterns = [
     path('componente/<int:pk>/', ComponenteRetrieveUpdateDestroy.as_view(), name='componente-detail'),
     path('local/', LocalListCreate.as_view(), name='local-list-create'),  
     path('local/<int:pk>/', LocalRetrieveUpdateDestroy.as_view(), name='local-detail'),
+    path('evento-componente/', EventoComponenteListCreate.as_view(), name='evento-componente-list-create'),  
+    path('evento-componente/<int:pk>/', EventoComponenteRetrieveUpdateDestroy.as_view(), name='evento-componente-detail'),
+    path('evento-banqueteria/', EventoBanqueteriaListCreate.as_view(), name='evento-banqueteria-list-create'),  
+    path('evento-banqueteria/<int:pk>/', EventoBanqueteriaRetrieveUpdateDestroy.as_view(), name='evento-banqueteria-detail'),
 ]
