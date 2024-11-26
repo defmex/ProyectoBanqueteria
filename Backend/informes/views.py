@@ -46,19 +46,11 @@ class InformeReserva(APIView):
                     cantidadCancelaciones += 1
                     
                 else:    
-                    banqueteriaPrecio = 0
-                    localPrecio = 0
                     if reserva.id_evento.banqueteria.exists():
                         cantidadBanqueteria += reserva.id_evento.banqueteria.count()
-                        for evento_banqueteria in reserva.id_evento.eventobanqueteria_set.all():
-                            banqueteria = evento_banqueteria.banqueteria
-                            cantidad = evento_banqueteria.cantidad
-                            banqueteriaPrecio += int(banqueteria.costo * cantidad)
                     if reserva.id_evento.local:
                         cantidadLocal += 1
-                        localPrecio = int(reserva.id_evento.local.precio)
-                    total = banqueteriaPrecio + localPrecio
-                    totalMensual += total
+                    totalMensual += reserva.total
         
         informe = Informe.objects.create(
             mes=mesSeleccionado,
