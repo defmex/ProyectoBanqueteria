@@ -6,8 +6,8 @@ from django.http import JsonResponse
 import json
 
 
-from .serializers import BanqueteriaSerializer, LocalSerializer, ComponenteSerializer, EventoSerializer
-from .models import Banqueteria, Local, Componente, Evento
+from .serializers import BanqueteriaSerializer, LocalSerializer, ComponenteSerializer, EventoSerializer, EventoComponenteSerializer
+from .models import Banqueteria, Local, Componente, Evento, EventoComponente
 
 
 class EventoListCreate(generics.ListCreateAPIView):
@@ -41,4 +41,12 @@ class ComponenteListCreate(generics.ListCreateAPIView):
 class ComponenteRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Componente.objects.all()
     serializer_class = ComponenteSerializer
+
+class EventoComponenteListCreate(generics.ListCreateAPIView):
+    queryset = EventoComponente.objects.all()
+    serializer_class = EventoComponenteSerializer
+
+class EventoComponenteRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = EventoComponente.objects.all()
+    serializer_class = EventoComponenteSerializer
 
