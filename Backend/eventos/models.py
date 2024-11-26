@@ -31,6 +31,14 @@ class Local(models.Model):
     def __str__(self):
         return f"{self.nombre_local}"
     
+class EventoBanqueteria(models.Model):
+    evento = models.ForeignKey('Evento', on_delete=models.CASCADE)
+    banqueteria = models.ForeignKey('Banqueteria', on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.evento}"
+
 class EventoComponente(models.Model):
     evento = models.ForeignKey('Evento', on_delete=models.CASCADE)
     componente = models.ForeignKey('Componente', on_delete=models.CASCADE)
@@ -38,13 +46,13 @@ class EventoComponente(models.Model):
 
     def __str__(self):
         return f"{self.evento}"
-    
+
 class Evento(models.Model):
     componentes = models.ManyToManyField(Componente, through='EventoComponente')
+    banqueteria = models.ManyToManyField(Banqueteria, through='EventoBanqueteria')
     num_personas = models.IntegerField()
     fecha_evento = models.DateField()
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    banqueteria = models.ManyToManyField(Banqueteria)
     local = models.ForeignKey(Local, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
