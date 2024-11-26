@@ -20,7 +20,7 @@ class InformeRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = InformeSerializer
 
 class InformeReserva(APIView):
-    def get(self, request):
+    def post(self, request):
 
         def obtener_mes_de_fecha(fecha_str):
             # Convertir la cadena de fecha a un objeto datetime
@@ -29,36 +29,47 @@ class InformeReserva(APIView):
             mes = fecha.month
             return mes
 
-        mesSeleccionado = 11 #se puede cambiar el mes seleccionado
+        mesSeleccionado = int(request.data.get("mes")) #se puede cambiar el mes seleccionado
         reservas = Reserva.objects.all()
-        cantidad_reservas = reservas.count()
         cantidadBanqueteria = 0
         cantidadLocal = 0
+        cantidadCancelaciones = 0
         totalMensual = 0
+
 
         for reserva in reservas:
             mes = obtener_mes_de_fecha(str(reserva.id_evento.fecha_evento))
+            print(reserva.id_evento.fecha_evento)
+            print(mes)
             if mes == mesSeleccionado:
-                banqueteriaPrecio = 0
-                localPrecio = 0
-                if reserva.id_evento.id_banqueteria != None:
-                    cantidadBanqueteria += 1
-                if reserva.id_evento.id_local != None:
-                    cantidadLocal += 1
-                if reserva.id_evento.id_banqueteria != None:
-                    banqueteriaPrecio = int(reserva.id_evento.id_banqueteria.costo)
-                if reserva.id_evento.id_local != None:
-                    localPrecio = int(reserva.id_evento.id_local.precio)
-                total = banqueteriaPrecio + localPrecio 
-                totalMensual += total
+                if reserva.estado == False:
+                    cantidadCancelaciones += 1
+                    
+                else:    
+                    banqueteriaPrecio = 0
+                    localPrecio = 0
+                    if reserva.id_evento.banqueteria.exists():
+                        cantidadBanqueteria += reserva.id_evento.banqueteria.count()
+                        for evento_banqueteria in reserva.id_evento.eventobanqueteria_set.all():
+                            banqueteria = evento_banqueteria.banqueteria
+                            cantidad = evento_banqueteria.cantidad
+                            banqueteriaPrecio += int(banqueteria.costo * cantidad)
+                    if reserva.id_evento.local:
+                        cantidadLocal += 1
+                        localPrecio = int(reserva.id_evento.local.precio)
+                    total = banqueteriaPrecio + localPrecio
+                    totalMensual += total
         
-        print(totalMensual)
+        informe = Informe.objects.create(
+            mes=mesSeleccionado,
+            total_mensual=totalMensual,
+            salones_arrendados=cantidadLocal,
+            banqueteria_vendidas=cantidadBanqueteria,
+            cancelaciones=cantidadCancelaciones
+        )
 
-
-        return Response({
-            'cantidad_reservas': cantidad_reservas,
-            'datos_reservas': mes,
-        }, status=status.HTTP_200_OK)
+        serializer = InformeSerializer(informe)
+        return Response(serializer.data, status=status.HTTP_200_OK)
         
 
 

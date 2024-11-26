@@ -12,7 +12,7 @@ class Cliente(models.Model):
     password = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.nombre} {self.apellido1}"
+        return f"{self.nombre} {self.apellido}"
     
     def save(self, *args, **kwargs):
         # Verifica si la contraseña es nueva o ha cambiado

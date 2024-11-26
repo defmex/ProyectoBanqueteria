@@ -56,4 +56,4 @@ class Evento(models.Model):
     local = models.ForeignKey(Local, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.cliente}"
+        return f"{self.cliente}, {self.local},  {self.fecha_evento} "
