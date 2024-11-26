@@ -1,4 +1,25 @@
-# Backend
-Backend/backendEnv/
-Backend/db.sqlite3
+# Ignorar archivos de compilación y carpetas de Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignorar el entorno virtual
+backendEnv/
+
+# Ignorar el archivo de configuración
 .env
+
+# Ignorar la base de datos SQLite (si aplica)
+db.sqlite3
+
+# Ignorar archivos estáticos y de medios (generados por Django)
+static/
+media/
+
+# Ignorar logs
+*.log
+
+# Ignorar configuraciones específicas del editor
+.vscode/
+.idea/
