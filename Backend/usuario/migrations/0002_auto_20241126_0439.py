@@ -2,9 +2,6 @@
 
 from django.db import migrations
 
-def cargar_datos(apps, schema_editor):
-    cliente = apps.get_model('usuario', 'cliente')  # Ajusta nombre_app y NombreModelo
-    cliente.objects.create(rut='12345678-9', nombre='Juan', apellido1='Perez', nickname= 'user1', telefono='12345678', correo= 'prueba@gmail.com', password= '12345')
 
 class Migration(migrations.Migration):
 
@@ -13,5 +10,4 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(cargar_datos),
     ]

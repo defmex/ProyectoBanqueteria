@@ -5,7 +5,7 @@ import bcrypt
 class Cliente(models.Model):
     rut = models.CharField(max_length=10, unique=True)
     nombre = models.CharField(max_length=100)
-    apellido1 = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
     nickname = models.CharField(max_length=100, unique=True)
     telefono = models.IntegerField()
     correo = models.EmailField(max_length=100, unique=True)
